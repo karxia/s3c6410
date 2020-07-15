@@ -17,7 +17,7 @@ _start:
 
 /*setting buffer*/
 	ldr sp, =8*1024
-	bl 	main
+//	bl 	main
 
 halt:
 	b 	halt

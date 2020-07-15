@@ -3,15 +3,14 @@
 *
 * Based on S3C6400 User's manual Rev 0.0
 ************************************************/
-#ifndef __S3C6400_H__
+#ifndef  __S3C6400_H__
 #define __S3C6400_H__
 
-#include <asm/hardware.h>
+#include "hardware.h"
 
-3C64XX_UART_CHANNELS	3
+#define S3C64XX_UART_CHANNELS	3
 #define S3C64XX_SPI_CHANNELS	2
 
-#include <asm/hardware.h>
 
 #define ELFIN_CLOCK_POWER_BASE	0x7e00f000
 
@@ -862,4 +861,4 @@ enum s3c64xx_uarts_nr {
 };
 
 #endif
-
+#endif 

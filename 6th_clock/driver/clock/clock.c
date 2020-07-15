@@ -14,15 +14,15 @@ void clock_init(){
 
 //setting async mode
 	OTHERS_REG &= ~0xc0;
-	while((OTERS & 0xf00)!=0);
+	while((OTHERS_REG & 0xf00)!=0);
 
 //setting clock div
-	CLK_DIV0_REG = CLV_DIV_VAL;
+	CLK_DIV0_REG = CLK_DIV_VAL;
 
 	APLL_CON_REG = APLL_VAL;
 	MPLL_CON_REG = MPLL_VAL;
 
-	CLK_SRC_REG  = 0x03:
+	CLK_SRC_REG  = 0x03;
 	
 
 

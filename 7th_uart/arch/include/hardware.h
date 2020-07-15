@@ -4,6 +4,8 @@
 #ifndef __HARDWARE_H__
 #define __HARDWARE_H__
 
+#include "common.h"
+
 #ifndef __ASSEMBLY__
 #define UData(Data)	((unsigned long) (Data))
 
