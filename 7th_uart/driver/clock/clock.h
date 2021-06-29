@@ -5,9 +5,10 @@
 #ifndef __CLOCK_H__
 #define __CLOCK_H__
 
-#include<hardware.h>
 #include<s3c6410.h>
 #include<config.h>
+
+#define CONFIG_CLK_533_133_66 
 
 #if defined(CONFIG_CLK_400_100_50)
 #define STARTUP_AMDIV		400

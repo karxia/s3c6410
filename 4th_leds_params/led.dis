@@ -39,47 +39,42 @@ Disassembly of section .text:
 50000068 <led_function>:
 50000068:	e92d4800 	push	{fp, lr}
 5000006c:	e28db004 	add	fp, sp, #4
-50000070:	e24dd018 	sub	sp, sp, #24
-50000074:	e50b0018 	str	r0, [fp, #-24]	; 0xffffffe8
-50000078:	e51b3018 	ldr	r3, [fp, #-24]	; 0xffffffe8
+50000070:	e24dd010 	sub	sp, sp, #16
+50000074:	e50b0010 	str	r0, [fp, #-16]
+50000078:	e51b3010 	ldr	r3, [fp, #-16]
 5000007c:	e50b3008 	str	r3, [fp, #-8]
-50000080:	e59f3080 	ldr	r3, [pc, #128]	; 50000108 <led_function+0xa0>
-50000084:	e50b300c 	str	r3, [fp, #-12]
-50000088:	e59f307c 	ldr	r3, [pc, #124]	; 5000010c <led_function+0xa4>
-5000008c:	e50b3010 	str	r3, [fp, #-16]
-50000090:	e51b300c 	ldr	r3, [fp, #-12]
-50000094:	e59f2074 	ldr	r2, [pc, #116]	; 50000110 <led_function+0xa8>
-50000098:	e5832000 	str	r2, [r3]
-5000009c:	e51b3010 	ldr	r3, [fp, #-16]
-500000a0:	e3a020f0 	mov	r2, #240	; 0xf0
-500000a4:	e5832000 	str	r2, [r3]
-500000a8:	e3a00601 	mov	r0, #1048576	; 0x100000
-500000ac:	ebffffdd 	bl	50000028 <delay>
-500000b0:	e51b3008 	ldr	r3, [fp, #-8]
-500000b4:	e1a03203 	lsl	r3, r3, #4
-500000b8:	e1e03003 	mvn	r3, r3
-500000bc:	e1a02003 	mov	r2, r3
-500000c0:	e51b3010 	ldr	r3, [fp, #-16]
-500000c4:	e5832000 	str	r2, [r3]
-500000c8:	e51b3008 	ldr	r3, [fp, #-8]
-500000cc:	e2833001 	add	r3, r3, #1
+50000080:	e59f306c 	ldr	r3, [pc, #108]	; 500000f4 <led_function+0x8c>
+50000084:	e59f206c 	ldr	r2, [pc, #108]	; 500000f8 <led_function+0x90>
+50000088:	e5832000 	str	r2, [r3]
+5000008c:	e59f3068 	ldr	r3, [pc, #104]	; 500000fc <led_function+0x94>
+50000090:	e3a020f0 	mov	r2, #240	; 0xf0
+50000094:	e5832000 	str	r2, [r3]
+50000098:	e3a00601 	mov	r0, #1048576	; 0x100000
+5000009c:	ebffffe1 	bl	50000028 <delay>
+500000a0:	e51b3008 	ldr	r3, [fp, #-8]
+500000a4:	e1a03203 	lsl	r3, r3, #4
+500000a8:	e1e02003 	mvn	r2, r3
+500000ac:	e59f3048 	ldr	r3, [pc, #72]	; 500000fc <led_function+0x94>
+500000b0:	e5832000 	str	r2, [r3]
+500000b4:	e51b3008 	ldr	r3, [fp, #-8]
+500000b8:	e2833001 	add	r3, r3, #1
+500000bc:	e50b3008 	str	r3, [fp, #-8]
+500000c0:	e51b3008 	ldr	r3, [fp, #-8]
+500000c4:	e3530010 	cmp	r3, #16
+500000c8:	1a000001 	bne	500000d4 <led_function+0x6c>
+500000cc:	e51b3010 	ldr	r3, [fp, #-16]
 500000d0:	e50b3008 	str	r3, [fp, #-8]
-500000d4:	e51b3008 	ldr	r3, [fp, #-8]
-500000d8:	e3530010 	cmp	r3, #16
-500000dc:	1a000001 	bne	500000e8 <led_function+0x80>
-500000e0:	e51b3018 	ldr	r3, [fp, #-24]	; 0xffffffe8
-500000e4:	e50b3008 	str	r3, [fp, #-8]
+500000d4:	e3a00601 	mov	r0, #1048576	; 0x100000
+500000d8:	ebffffd2 	bl	50000028 <delay>
+500000dc:	e59f3018 	ldr	r3, [pc, #24]	; 500000fc <led_function+0x94>
+500000e0:	e3a020f0 	mov	r2, #240	; 0xf0
+500000e4:	e5832000 	str	r2, [r3]
 500000e8:	e3a00601 	mov	r0, #1048576	; 0x100000
 500000ec:	ebffffcd 	bl	50000028 <delay>
-500000f0:	e51b3010 	ldr	r3, [fp, #-16]
-500000f4:	e3a020f0 	mov	r2, #240	; 0xf0
-500000f8:	e5832000 	str	r2, [r3]
-500000fc:	e3a00601 	mov	r0, #1048576	; 0x100000
-50000100:	ebffffc8 	bl	50000028 <delay>
-50000104:	eaffffe9 	b	500000b0 <led_function+0x48>
-50000108:	7f008800 	svcvc	0x00008800
-5000010c:	7f008808 	svcvc	0x00008808
-50000110:	11110000 	tstne	r1, r0
+500000f0:	eaffffea 	b	500000a0 <led_function+0x38>
+500000f4:	7f008800 	svcvc	0x00008800
+500000f8:	11110000 	tstne	r1, r0
+500000fc:	7f008808 	svcvc	0x00008808
 
 Disassembly of section .comment:
 
