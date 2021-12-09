@@ -25,9 +25,9 @@ void uart3_init();
 #endif
 
 
-char getchar(void);
+unsigned char getc(void);
 
-void  putchar(char);
+void putc(unsigned char);
 
 
 #endif

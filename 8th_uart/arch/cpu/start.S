@@ -19,7 +19,9 @@ _start:
 
 	bl 	clock_init
 	bl  led_init
-	bl  uart0_init
+	bl  uart_init
+	bl  main
+
 
 //	bl 	main
 

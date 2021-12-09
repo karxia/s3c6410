@@ -9,14 +9,16 @@ OBJDUMP	= arm-none-eabi-objdump
 
 INCLUDEDIR 	:= $(shell pwd)/include
 INCLUDEDIR 	+= $(shell pwd)/arch/include
+CRNT_DIR    := $(shell pwd)
 
-CGLAGS		:= -Wall -0s -fno-builtin-printf -fno-builtin-putc -fno-builtin-putchar
+CFLAGS		:= -Wall -Os -fno-builtin-printf -fno-builtin-putc -fno-builtin-putchar
 
 
 CPPFLAGS 	:= -nostdinc $(addprefix -I,$(INCLUDEDIR))
 
+export CC AR LD OBJCOPY  OBJDUMP INCLUDEDIR CFLAGS  CPPFLAGS 
 
-objs		:=  start.o clock.o  led.o uart.o lib/libc.a
+objs		:=  start.o clock.o  led.o uart.o main.o lib/libc.a
 
 app6410.bin : $(objs)
 	${LD} -Tsection.lds  -o 8th_uart.elf $^
@@ -25,20 +27,23 @@ app6410.bin : $(objs)
 
 .PHONY : lib/libc.a
 lib/libc.a:
-	cd lib; make; cd..
+	cd lib; make; cd ..
 
 
 
-start.o : ~/work/app_6410/8th_uart/arch/cpu/start.S
-	arm-none-eabi-gcc $(CPPFLAGS)  -c ./arch/cpu/start.S -o start.o
-clock.o : ~/work/app_6410/8th_uart/driver/clock/clock.c
-	arm-none-eabi-gcc $(CPPFLAGS)  -c ./driver/clock/clock.c -o clock.o
+start.o : $(CRNT_DIR)/arch/cpu/start.S
+	arm-none-eabi-gcc $(CPPFLAGS) $(CFLAGS) -c $(CRNT_DIR)/arch/cpu/start.S -o start.o
+clock.o : $(CRNT_DIR)/driver/clock/clock.c
+	arm-none-eabi-gcc $(CPPFLAGS) $(CFLAGS) -c $(CRNT_DIR)/driver/clock/clock.c -o clock.o
 
-led.o : ~/work/app_6410/8th_uart/driver/led/led.c
-	arm-none-eabi-gcc $(CPPFLAGS)  -c ./driver/led/led.c -o led.o
-uart.o : ~/work/app_6410/8th_uart/driver/uart/uart.c
-	arm-none-eabi-gcc $(CPPFLAGS)  -c ./driver/uart/uart.c -o uart.o
+led.o : $(CRNT_DIR)/driver/led/led.c
+	arm-none-eabi-gcc $(CPPFLAGS) $(CFLAGS) -c $(CRNT_DIR)/driver/led/led.c -o led.o
+uart.o : $(CRNT_DIR)/driver/uart/uart.c
+	arm-none-eabi-gcc $(CPPFLAGS) $(CFLAGS) -c $(CRNT_DIR)/driver/uart/uart.c -o uart.o
+main.o : $(CRNT_DIR)/main.c
+	arm-none-eabi-gcc $(CPPFLAGS) $(CFLAFS) -c $(CRNT_DIR)/main.c -o main.o
 
 clean:
 	make clean -C lib
-	rm *.o *.elf *.bin *.dis 
+	rm -rf *.o *.dis *.bin *.dis
+
